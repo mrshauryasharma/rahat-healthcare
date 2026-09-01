@@ -12,6 +12,11 @@ export const metadata: Metadata = {
   description:
     'RAHAT helps you describe health concerns, answer guided questions, consult verified doctors, and prepare reports. Available in English, Hindi, and Bengali.',
   keywords: ['healthcare', 'health check', 'symptoms', 'AI health', 'RAHAT', 'doctor portal', 'telemedicine'],
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
 };
 
 export default function RootLayout({
