@@ -1,0 +1,79 @@
+.footer {
+  background-color: var(--color-background, #F7FAFA);
+  border-top: 1px solid var(--color-borders, #E2E8F0);
+  padding: 3rem 2rem 1rem;
+  color: var(--color-text, #1A2B3C);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.brand {
+  max-width: 400px;
+}
+
+.logoSection {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.logoImage {
+  height: 32px;
+}
+
+.logoText {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--color-primary-blue, #0088CC);
+}
+
+.disclaimer {
+  font-size: 0.875rem;
+  color: var(--color-secondary, #5A6B7C);
+  line-height: 1.5;
+}
+
+.links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.link {
+  color: var(--color-text, #1A2B3C);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.link:hover {
+  color: var(--color-primary-teal, #00B4D8);
+}
+
+.bottom {
+  max-width: 1200px;
+  margin: 2rem auto 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-borders, #E2E8F0);
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-secondary, #5A6B7C);
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .links {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}

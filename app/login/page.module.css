@@ -1,0 +1,146 @@
+/* app/login/page.module.css */
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-background);
+  padding: 1rem;
+}
+
+.header {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.backLink {
+  color: var(--color-primary);
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  border: 1px solid var(--color-borders);
+}
+
+.logoImg {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.label {
+  text-align: left;
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: -0.5rem;
+}
+
+.logo {
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: var(--color-secondary);
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+.demoNote {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  border: 1px solid #bae6fd;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.inputGroup {
+  display: flex;
+  border: 1px solid var(--color-borders);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.prefix {
+  background: #f1f5f9;
+  padding: 0.75rem 1rem;
+  color: var(--color-secondary);
+  font-weight: 600;
+  border-right: 1px solid var(--color-borders);
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+}
+
+.input:focus {
+  background: #f8fafc;
+}
+
+.error {
+  color: #ef4444;
+  font-size: 0.875rem;
+  text-align: left;
+}
+
+.button {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 0.875rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.button:not(:disabled):hover {
+  background: #0077b3;
+}

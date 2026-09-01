@@ -1,0 +1,230 @@
+/* components/Header.module.css */
+.header {
+  position: sticky;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-borders, #E2E8F0);
+  z-index: 1000;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.03);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+.logoSection {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 0.75rem;
+}
+
+.logoImage {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logoText {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--color-primary, #0088CC);
+  letter-spacing: -0.5px;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-text, #1A2B3C);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  gap: 1.5rem;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navLink {
+  text-decoration: none;
+  color: var(--color-text, #1A2B3C);
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.navLink:hover {
+  color: var(--color-primary, #0088CC);
+  background-color: #f0f7f7;
+  transform: translateY(-1px);
+}
+
+.active {
+  color: var(--color-primary, #0088CC);
+  background-color: #f0f7f7;
+  font-weight: 700;
+}
+
+.aiChatLink {
+  color: #0284c7;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+}
+
+.aiChatLink:hover {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.aiIcon {
+  font-size: 1.1rem;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.doctorPortalPill {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #f0fdf4;
+  color: #166534;
+  border: 1.5px solid #bbf7d0;
+  padding: 0.45rem 0.95rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(22, 101, 52, 0.08);
+}
+
+.doctorPortalPill:hover {
+  background: #dcfce7;
+  border-color: #86efac;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(22, 101, 52, 0.15);
+}
+
+.doctorIcon {
+  font-size: 1.05rem;
+}
+
+.authButton {
+  padding: 0.55rem 1.25rem;
+  background: linear-gradient(135deg, var(--color-primary, #0088CC), var(--color-teal, #00B4D8));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 136, 204, 0.25);
+}
+
+.authButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 136, 204, 0.35);
+  opacity: 0.95;
+}
+
+.logoutButton {
+  padding: 0.55rem 1.15rem;
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.88rem;
+  transition: all 0.2s;
+}
+
+.logoutButton:hover {
+  background: #fca5a5;
+  color: #7f1d1d;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0.75rem 1.25rem;
+    gap: 1rem;
+  }
+  .navLinks {
+    gap: 0.25rem;
+  }
+  .navLink {
+    padding: 0.45rem 0.65rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .hamburger {
+    display: block;
+  }
+  
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--color-borders, #E2E8F0);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    align-items: stretch;
+    gap: 1.25rem;
+  }
+
+  .navLinks {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .navOpen {
+    display: flex;
+  }
+}

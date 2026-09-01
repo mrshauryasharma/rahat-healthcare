@@ -1,0 +1,127 @@
+/* components/AdminHeader.module.css */
+.header {
+  position: sticky;
+  top: 0;
+  background: #0f172a;
+  border-bottom: 2px solid #334155;
+  color: white;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.shieldIcon {
+  font-size: 1.6rem;
+}
+
+.brandTitle {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #f8fafc;
+  display: block;
+}
+
+.secretTag {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #f43f5e;
+  background: rgba(244, 63, 94, 0.15);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  display: inline-block;
+  letter-spacing: 0.5px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navLink {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.navLink:hover {
+  background: #1e293b;
+  color: white;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.adminMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.adminRole {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #38bdf8;
+  letter-spacing: 0.5px;
+}
+
+.adminEmail {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.logoutBtn {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.logoutBtn:hover {
+  background: #b91c1c;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0.75rem 1rem;
+  }
+  .nav {
+    display: none;
+  }
+}

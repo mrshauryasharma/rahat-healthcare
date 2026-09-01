@@ -1,0 +1,248 @@
+/* app/admin-secure-panel-2026/dashboard/page.module.css */
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #0b0f19;
+  color: #f1f5f9;
+}
+
+.main {
+  flex: 1;
+  padding: 2.5rem 1.5rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.topControl {
+  margin-bottom: 2rem;
+}
+
+.adminBadge {
+  display: inline-block;
+  background: rgba(244, 63, 94, 0.15);
+  color: #fb7185;
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.title {
+  font-size: 1.85rem;
+  color: #f8fafc;
+  margin: 0 0 0.35rem 0;
+  font-weight: 800;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.metricCard {
+  background: #131b2e;
+  border: 1px solid #1e293b;
+  padding: 1.5rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.metricIcon {
+  font-size: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.metricVal {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #f8fafc;
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+
+.metricLabel {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.metricTrend {
+  font-size: 0.75rem;
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+.section {
+  background: #131b2e;
+  border: 1px solid #1e293b;
+  padding: 2rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.sectionHeader h2, .section h2 {
+  font-size: 1.25rem;
+  color: #f8fafc;
+  margin: 0;
+  font-weight: 700;
+}
+
+.countBadge {
+  background: #1e293b;
+  color: #38bdf8;
+  border: 1px solid #334155;
+  padding: 0.3rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.table th {
+  background: #0f172a;
+  padding: 0.85rem 1rem;
+  color: #94a3b8;
+  font-weight: 700;
+  border-bottom: 1px solid #1e293b;
+}
+
+.table td {
+  padding: 1rem;
+  border-bottom: 1px solid #1e293b;
+  color: #e2e8f0;
+}
+
+.statusPill {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.verified {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.pending {
+  background: rgba(234, 179, 8, 0.15);
+  color: #fde047;
+  border: 1px solid rgba(234, 179, 8, 0.3);
+}
+
+.verifyBtn {
+  background: #0284c7;
+  color: white;
+  border: none;
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.verifyBtn:hover {
+  opacity: 0.9;
+}
+
+.verifiedText {
+  color: #4ade80;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.bloodTag {
+  background: rgba(244, 63, 94, 0.15);
+  color: #fb7185;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.integrationsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.integrationItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: #0f172a;
+  border-radius: 12px;
+  border: 1px solid #1e293b;
+}
+
+.intIcon {
+  font-size: 1.8rem;
+}
+
+.integrationItem h4 {
+  margin: 0 0 0.35rem 0;
+  font-size: 0.95rem;
+  color: #f8fafc;
+}
+
+.integrationItem p {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.tagReady {
+  display: inline-block;
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.tagActive {
+  display: inline-block;
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}

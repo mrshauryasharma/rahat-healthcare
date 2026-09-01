@@ -1,0 +1,157 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-color, #F7FAFA);
+}
+
+.main {
+  flex: 1;
+  padding: 2rem 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  color: var(--text-color, #1A2B3C);
+  margin: 0;
+}
+
+.notice {
+  background: #E6F8F3;
+  color: var(--secondary-color, #5A6B7C);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.btnPrimary, .btnSecondary {
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+}
+
+.btnPrimary {
+  background: var(--primary-color, #0088CC);
+  color: white;
+}
+
+.btnSecondary {
+  background: white;
+  color: var(--primary-color, #0088CC);
+  border: 1px solid var(--primary-color, #0088CC);
+}
+
+.formCard {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color, #E2E8F0);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  margin-bottom: 2rem;
+}
+
+.formCard h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--text-color, #1A2B3C);
+}
+
+.formGroup {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formGroup label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--secondary-color, #5A6B7C);
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.input {
+  padding: 0.75rem;
+  border: 1px solid var(--border-color, #E2E8F0);
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.input:disabled {
+  background: var(--bg-color, #F7FAFA);
+  color: var(--secondary-color, #5A6B7C);
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color, #E2E8F0);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color, #E2E8F0);
+  padding-bottom: 0.75rem;
+}
+
+.cardHeader h3 {
+  margin: 0;
+  color: var(--primary-color, #0088CC);
+}
+
+.statusBadge {
+  background: #FFF3CD;
+  color: #856404;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.cardDetails p {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-color, #1A2B3C);
+}
+
+@media (max-width: 480px) {
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+}

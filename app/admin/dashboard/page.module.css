@@ -1,0 +1,244 @@
+/* app/admin/dashboard/page.module.css */
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8fafc;
+}
+
+.main {
+  flex: 1;
+  padding: 2.5rem 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.adminHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.adminBadge {
+  display: inline-block;
+  background: #ede9fe;
+  color: #6d28d9;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 1.8rem;
+  color: #0f172a;
+  margin: 0;
+  font-weight: 700;
+}
+
+.adminEmail {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0.25rem 0 0 0;
+}
+
+.logoutBtn {
+  background: white;
+  border: 1.5px solid #cbd5e1;
+  color: #475569;
+  padding: 0.6rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.metricCard {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.metricIcon {
+  font-size: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.metricVal {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+
+.metricLabel {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.metricTrend {
+  font-size: 0.75rem;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.section {
+  background: white;
+  padding: 2rem;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 2rem;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.sectionHeader h2, .section h2 {
+  font-size: 1.25rem;
+  color: #0f172a;
+  margin: 0;
+  font-weight: 700;
+}
+
+.queueCount {
+  background: #fef3c7;
+  color: #b45309;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.table th {
+  background: #f8fafc;
+  padding: 0.85rem 1rem;
+  color: #475569;
+  font-weight: 600;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.table td {
+  padding: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  color: #1e293b;
+}
+
+.statusPill {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.verified {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.pending {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.verifyBtn {
+  background: #0284c7;
+  color: white;
+  border: none;
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.activeText {
+  color: #16a34a;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.integrationsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.integrationItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: #f8fafc;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.intIcon {
+  font-size: 1.8rem;
+}
+
+.integrationItem h4 {
+  margin: 0 0 0.35rem 0;
+  font-size: 0.95rem;
+  color: #0f172a;
+}
+
+.integrationItem p {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.tagReady {
+  display: inline-block;
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.tagActive {
+  display: inline-block;
+  background: #dcfce7;
+  color: #15803d;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}

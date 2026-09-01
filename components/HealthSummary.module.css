@@ -1,0 +1,99 @@
+.container {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  border: 1px solid var(--color-borders, #E2E8F0);
+}
+
+.title {
+  margin-top: 0;
+  color: var(--color-primary-blue, #0088CC);
+  border-bottom: 2px solid var(--color-background, #F7FAFA);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.section {
+  margin-bottom: 1.5rem;
+}
+
+.sectionTitle {
+  font-size: 1.1rem;
+  color: var(--color-secondary, #5A6B7C);
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+.text {
+  margin: 0;
+  color: var(--color-text, #1A2B3C);
+  line-height: 1.5;
+}
+
+.list {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: var(--color-text, #1A2B3C);
+}
+
+.list li {
+  margin-bottom: 0.5rem;
+}
+
+.qaItem {
+  background: var(--color-background, #F7FAFA);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  border: 1px solid var(--color-borders, #E2E8F0);
+  font-size: 0.95rem;
+}
+
+.warningNote {
+  color: #b45309;
+  font-weight: 500;
+}
+
+.imagesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.imageCard {
+  border: 1px solid var(--color-borders, #E2E8F0);
+  border-radius: 4px;
+  padding: 0.5rem;
+  background: var(--color-background, #F7FAFA);
+}
+
+.medImage {
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+}
+
+.medNotes {
+  font-size: 0.8rem;
+  margin: 0.5rem 0 0 0;
+  color: var(--color-secondary, #5A6B7C);
+}
+
+.textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 0.75rem;
+  border: 1px solid var(--color-borders, #E2E8F0);
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.disclaimer {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #FEF3C7;
+  color: #92400E;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  text-align: center;
+}

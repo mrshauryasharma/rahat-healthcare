@@ -1,0 +1,198 @@
+/* app/profile/page.module.css */
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-background, #F7FAFA);
+}
+
+.main {
+  flex: 1;
+  padding: 2.5rem 1rem;
+  max-width: 840px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  color: var(--color-text, #1A2B3C);
+  margin: 0;
+  font-weight: 700;
+}
+
+.headerButtons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btnPrimary {
+  background: var(--color-primary, #0088CC);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btnPrimary:hover {
+  opacity: 0.9;
+}
+
+.btnSecondary {
+  background: white;
+  color: var(--color-secondary, #5A6B7C);
+  border: 1.5px solid var(--color-borders, #E2E8F0);
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btnSecondary:hover {
+  background: #f8fafc;
+}
+
+.section {
+  background: white;
+  padding: 1.75rem;
+  border-radius: 14px;
+  border: 1px solid var(--color-borders, #E2E8F0);
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.section h2 {
+  font-size: 1.2rem;
+  color: var(--color-text, #1A2B3C);
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-borders, #E2E8F0);
+  padding-bottom: 0.6rem;
+  font-weight: 600;
+}
+
+.healthIdBox {
+  text-align: center;
+  background: linear-gradient(135deg, rgba(0, 136, 204, 0.05), rgba(0, 200, 150, 0.08));
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1.5px dashed rgba(0, 180, 216, 0.4);
+}
+
+.healthIdBox h2 {
+  border: none;
+  margin-bottom: 0.5rem;
+  padding: 0;
+  color: var(--color-secondary, #5A6B7C);
+}
+
+.idNumber {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-primary, #0088CC);
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.idSubtext {
+  font-size: 0.85rem;
+  color: var(--color-secondary, #5A6B7C);
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.fieldFull {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.field label, .fieldFull label {
+  font-size: 0.85rem;
+  color: var(--color-secondary, #5A6B7C);
+  font-weight: 600;
+}
+
+.fieldVal {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--color-text, #1A2B3C);
+  font-weight: 500;
+  padding: 0.4rem 0;
+}
+
+.input, .textarea {
+  padding: 0.6rem 0.85rem;
+  border: 1.5px solid var(--color-borders, #E2E8F0);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.input:focus, .textarea:focus {
+  outline: none;
+  border-color: var(--color-primary, #0088CC);
+}
+
+.langSelectorWrap {
+  display: inline-block;
+}
+
+.integrationNotice {
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  color: #0369a1;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.privacyNote {
+  text-align: center;
+  color: var(--color-secondary, #5A6B7C);
+  font-size: 0.875rem;
+  margin-top: 2rem;
+  padding: 0 1rem;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .idNumber {
+    font-size: 1.4rem;
+  }
+}

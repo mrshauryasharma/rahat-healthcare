@@ -1,0 +1,277 @@
+/* app/chat/page.module.css */
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-background, #F7FAFA);
+}
+
+.main {
+  flex: 1;
+  padding: 2rem 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.chatCard {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid var(--color-borders, #E2E8F0);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 200px);
+  min-height: 600px;
+  overflow: hidden;
+}
+
+.chatHeader {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--color-borders, #E2E8F0);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(0, 136, 204, 0.04), rgba(0, 180, 216, 0.06));
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.botInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.botAvatar {
+  width: 44px;
+  height: 44px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 180, 216, 0.3);
+}
+
+.title {
+  font-size: 1.25rem;
+  color: var(--color-text, #1A2B3C);
+  margin: 0;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 0.85rem;
+  color: var(--color-secondary, #5A6B7C);
+  margin: 0.15rem 0 0 0;
+}
+
+.headerCta {
+  background: var(--color-primary, #0088CC);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.quickPrompts {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: #f8fafc;
+  border-bottom: 1px solid var(--color-borders, #E2E8F0);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.promptBtn {
+  background: white;
+  border: 1px solid var(--color-borders, #E2E8F0);
+  border-radius: 20px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.8rem;
+  color: var(--color-secondary, #5A6B7C);
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.promptBtn:hover {
+  border-color: var(--color-primary, #0088CC);
+  color: var(--color-primary, #0088CC);
+  background: #f0f9ff;
+}
+
+.messagesBox {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.messageRow {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-end;
+}
+
+.userRow {
+  justify-content: flex-end;
+}
+
+.aiRow {
+  justify-content: flex-start;
+}
+
+.avatarMini {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.messageBubble {
+  max-width: 75%;
+  padding: 0.85rem 1.15rem;
+  border-radius: 12px;
+  position: relative;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.userBubble {
+  background: var(--color-primary, #0088CC);
+  color: white;
+  border-bottom-right-radius: 2px;
+}
+
+.aiBubble {
+  background: #f1f5f9;
+  color: var(--color-text, #1A2B3C);
+  border-bottom-left-radius: 2px;
+  border: 1px solid var(--color-borders, #E2E8F0);
+}
+
+.emergencyBubble {
+  background: #fff1f2;
+  border: 1.5px solid #f87171;
+  color: #991b1b;
+}
+
+.messageText {
+  margin: 0;
+}
+
+.time {
+  display: block;
+  font-size: 0.7rem;
+  margin-top: 0.4rem;
+  opacity: 0.7;
+  text-align: right;
+}
+
+.actionBlock {
+  margin-top: 0.75rem;
+}
+
+.bubbleActionBtn {
+  background: var(--color-primary, #0088CC);
+  color: white;
+  border: none;
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.bubbleEmergencyBtn {
+  background: #dc2626;
+  color: white;
+  border: none;
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.typingIndicator {
+  background: #f1f5f9;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  display: inline-flex;
+  gap: 4px;
+  color: var(--color-secondary, #5A6B7C);
+  font-size: 0.8rem;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.inputArea {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--color-borders, #E2E8F0);
+  display: flex;
+  gap: 0.75rem;
+  background: white;
+}
+
+.input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--color-borders, #E2E8F0);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--color-primary, #0088CC);
+}
+
+.sendBtn {
+  background: var(--color-primary, #0088CC);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.sendBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.safetyFootnote {
+  font-size: 0.75rem;
+  color: var(--color-secondary, #5A6B7C);
+  text-align: center;
+  padding: 0.5rem;
+  background: #fafafa;
+  border-top: 1px solid var(--color-borders, #E2E8F0);
+}
+
+@media (max-width: 600px) {
+  .chatCard {
+    height: calc(100vh - 160px);
+    min-height: auto;
+  }
+  .messageBubble {
+    max-width: 90%;
+  }
+}

@@ -1,0 +1,135 @@
+/* app/admin-secure-panel-2026/login/page.module.css */
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top, #1e293b 0%, #090d16 100%);
+  padding: 1.5rem;
+}
+
+.topBar {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.backLink {
+  color: #94a3b8;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.backLink:hover {
+  color: white;
+}
+
+.card {
+  background: #0f172a;
+  border: 1px solid #334155;
+  padding: 2.75rem 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  max-width: 480px;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(244, 63, 94, 0.15);
+  color: #fb7185;
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.5px;
+}
+
+.title {
+  font-size: 1.6rem;
+  color: #f8fafc;
+  margin: 0 0 0.5rem 0;
+  font-weight: 800;
+}
+
+.subtitle {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  margin: 0 0 1.75rem 0;
+  line-height: 1.5;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.field label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #cbd5e1;
+  letter-spacing: 0.3px;
+}
+
+.input {
+  padding: 0.85rem 1rem;
+  border: 1.5px solid #334155;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  background: #1e293b;
+  color: white;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  border-color: #38bdf8;
+}
+
+.error {
+  color: #fb7185;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.submitBtn {
+  background: #0284c7;
+  color: white;
+  border: none;
+  padding: 0.95rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 0.5rem;
+}
+
+.submitBtn:hover {
+  background: #0369a1;
+  transform: translateY(-1px);
+}
+
+.footerNote {
+  margin-top: 1.75rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #64748b;
+}

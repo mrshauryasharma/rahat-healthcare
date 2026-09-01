@@ -1,0 +1,322 @@
+/* app/doctor/dashboard/page.module.css */
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f0fdf4;
+}
+
+.main {
+  flex: 1;
+  padding: 2.5rem 1.5rem;
+  max-width: 1160px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Doctor Banner */
+.doctorBanner {
+  background: white;
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #bbf7d0;
+  box-shadow: 0 4px 20px rgba(22, 101, 52, 0.05);
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.doctorInfoArea {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.docAvatar {
+  width: 58px;
+  height: 58px;
+  background: #dcfce7;
+  color: #166534;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  border: 2px solid #86efac;
+}
+
+.verifiedTag {
+  background: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+  padding: 0.15rem 0.5rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  margin-bottom: 0.25rem;
+}
+
+.docName {
+  font-size: 1.5rem;
+  color: #0f172a;
+  margin: 0;
+  font-weight: 800;
+}
+
+.docDetails {
+  font-size: 0.9rem;
+  color: #4b5563;
+  margin: 0.2rem 0 0 0;
+}
+
+.issueRxBtn {
+  background: #16a34a;
+  color: white;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.issueRxBtn:hover {
+  background: #15803d;
+  transform: translateY(-2px);
+}
+
+/* Patient Lookup Section */
+.lookupSection {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1.5px solid #bbf7d0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  margin-bottom: 2rem;
+}
+
+.lookupHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.lookupIcon {
+  font-size: 2rem;
+}
+
+.lookupHeader h2 {
+  font-size: 1.3rem;
+  color: #0f172a;
+  margin: 0 0 0.25rem 0;
+  font-weight: 800;
+}
+
+.lookupHeader p {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.lookupForm {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.lookupInput {
+  flex: 1;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+}
+
+.lookupInput:focus {
+  border-color: #16a34a;
+}
+
+.lookupSubmitBtn {
+  background: #0284c7;
+  color: white;
+  border: none;
+  padding: 0.85rem 1.75rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lookupSubmitBtn:hover {
+  background: #0369a1;
+}
+
+.searchError {
+  color: #dc2626;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 0.75rem;
+}
+
+/* Patient Record Box */
+.patientRecordBox {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  border: 2px solid #86efac;
+  box-shadow: 0 8px 30px rgba(22, 101, 52, 0.1);
+  margin-bottom: 2rem;
+}
+
+.recordBoxHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.activeRecordBadge {
+  background: #dcfce7;
+  color: #15803d;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 0.25rem;
+}
+
+.recordBoxHeader h3 {
+  font-size: 1.2rem;
+  color: #0f172a;
+  margin: 0;
+}
+
+.writeRxForLoadedBtn {
+  background: #16a34a;
+  color: white;
+  border: none;
+  padding: 0.65rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Consultation Queue */
+.queueCard {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1.5px solid #e2e8f0;
+}
+
+.queueHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.queueHeader h2 {
+  font-size: 1.25rem;
+  color: #0f172a;
+  margin: 0;
+  font-weight: 800;
+}
+
+.queueBadge {
+  background: #dcfce7;
+  color: #166534;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.queueTable {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.queueRow {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 1.25rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.queueTime {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #16a34a;
+  width: 90px;
+}
+
+.queueDetails {
+  flex: 1;
+}
+
+.queueDetails h4 {
+  font-size: 1.05rem;
+  color: #0f172a;
+  margin: 0 0 0.25rem 0;
+}
+
+.queueDetails p {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.queueActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.openReportBtn {
+  background: white;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.rxQuickBtn {
+  background: #16a34a;
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .lookupForm {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,217 @@
+/* components/PatientHeader.module.css */
+.header {
+  position: sticky;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid #bae6fd;
+  z-index: 1000;
+  box-shadow: 0 2px 12px rgba(0, 136, 204, 0.05);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+.logoSection {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 0.75rem;
+}
+
+.logoImage {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logoText {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--color-primary, #0088CC);
+  letter-spacing: -0.5px;
+  line-height: 1;
+  display: block;
+}
+
+.roleTag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #0369a1;
+  background: #e0f2fe;
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 0.2rem;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-text, #1A2B3C);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  gap: 1.5rem;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.navLink {
+  text-decoration: none;
+  color: var(--color-text, #1A2B3C);
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.navLink:hover {
+  color: var(--color-primary, #0088CC);
+  background-color: #f0f9ff;
+  transform: translateY(-1px);
+}
+
+.active {
+  color: var(--color-primary, #0088CC);
+  background-color: #f0f9ff;
+  font-weight: 700;
+  border: 1px solid #bae6fd;
+}
+
+.aiChatLink {
+  color: #0284c7;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.healthIdBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #f8fafc;
+  border: 1px solid var(--color-borders, #E2E8F0);
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+}
+
+.idLabel {
+  background: #0284c7;
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+}
+
+.idCode {
+  font-family: monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.logoutButton {
+  padding: 0.55rem 1.15rem;
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.88rem;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.logoutButton:hover {
+  background: #fca5a5;
+  color: #7f1d1d;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0.75rem 1.25rem;
+    gap: 1rem;
+  }
+  .navLinks {
+    gap: 0.2rem;
+  }
+  .navLink {
+    padding: 0.45rem 0.65rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .hamburger {
+    display: block;
+  }
+  
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--color-borders, #E2E8F0);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    align-items: stretch;
+    gap: 1.25rem;
+  }
+
+  .navLinks {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .navOpen {
+    display: flex;
+  }
+}
