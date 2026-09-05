@@ -1,4 +1,4 @@
-// app/chat/page.tsx — Interactive RAHAT AI Health Assistant Chatbot
+// app/chat/page.tsx — Interactive RAHAT AI Health Assistant Chatbot with Voice Input & Audio Readout
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -8,6 +8,9 @@ import PatientHeader from '@/components/PatientHeader';
 import DoctorHeader from '@/components/DoctorHeader';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/components/LanguageProvider';
+import VoiceInput from '@/components/VoiceInput';
+import AudioReadout from '@/components/AudioReadout';
+import { IconBot, IconStethoscope, IconShieldCheck } from '@/components/Icons';
 import { ChatMessage } from '@/types/health';
 import styles from './page.module.css';
 
@@ -21,10 +24,10 @@ export default function AiChatPage() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const quickPrompts = [
-    { label: language === 'hi' ? '🤒 2 दिन से बुखार और ठंड' : language === 'bn' ? '🤒 ২ দিন ধরে জ্বর ও শীত' : '🤒 Fever & chills for 2 days', query: 'I have had fever and chills for 2 days' },
-    { label: language === 'hi' ? '🤧 सर्दी और गले में खराश' : language === 'bn' ? '🤧 সর্দি ও গলায় ব্যথা' : '🤧 Cold & sore throat', query: 'Severe runny nose and throat irritation' },
-    { label: language === 'hi' ? '🤕 तेज सिरदर्द' : language === 'bn' ? '🤕 তীব্র মাথাব্যথা' : '🤕 Throbbing headache', query: 'Severe continuous headache and light sensitivity' },
-    { label: language === 'hi' ? '🤢 पेट में दर्द और ऐंठन' : language === 'bn' ? '🤢 পেটে তীব্র ব্যথা' : '🤢 Stomach ache & cramps', query: 'Sharp stomach pain after eating meals' },
+    { label: language === 'hi' ? '🤒 2 दिन से तेज बुखार' : language === 'bn' ? '🤒 ২ দিন ধরে তীব্র জ্বর' : '🤒 Fever & chills for 2 days', query: 'I have had fever and chills for 2 days' },
+    { label: language === 'hi' ? '🤧 सर्दी और गले में खराश' : language === 'bn' ? '🤧 সর্দি ও গলায় তীব্র ব্যথা' : '🤧 Cold & sore throat', query: 'Severe runny nose and throat irritation' },
+    { label: language === 'hi' ? '🤕 लगातार तेज सिरदर्द' : language === 'bn' ? '🤕 তীব্র মাথাব্যথা' : '🤕 Throbbing headache', query: 'Severe continuous headache and light sensitivity' },
+    { label: language === 'hi' ? '🤢 पेट दर्द और अपच' : language === 'bn' ? '🤢 পেটে তীব্র গ্যাস ও ব্যথা' : '🤢 Stomach ache & cramps', query: 'Sharp stomach pain after eating meals' },
   ];
 
   useEffect(() => {
@@ -43,7 +46,7 @@ export default function AiChatPage() {
       {
         id: '1',
         sender: 'ai',
-        text: t('chat.welcomeMsg') || 'Hello! I am RAHAT AI Health Assistant. How can I help you understand your symptoms today?',
+        text: t('chat.welcomeMsg') || 'Hello! I am RAHAT AI Health Assistant. How can I help you understand your symptoms today? You can speak in Hindi, Bengali, or English.',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         suggestedAction: 'none'
       }
@@ -58,7 +61,7 @@ export default function AiChatPage() {
     const lower = userQuery.toLowerCase();
     
     // Emergency checks
-    if (lower.includes('chest pain') || lower.includes('breathing') || lower.includes('unconscious') || lower.includes('severe bleeding') || lower.includes('stroke') || lower.includes('सीने में दर्द') || lower.includes('শ্বাসকষ্ট')) {
+    if (lower.includes('chest pain') || lower.includes('breathing') || lower.includes('unconscious') || lower.includes('severe bleeding') || lower.includes('stroke') || lower.includes('सीने में दर्द') || lower.includes('सांस') || lower.includes('শ্বাসকষ্ট')) {
       return {
         text: language === 'hi' 
           ? '⚠️ आपातकालीन चेतावनी: सीने में तेज दर्द या सांस लेने में तकलीफ गंभीर हो सकती है। कृपया तुरंत 108/112 डायल करें या निकटतम आपातकालीन अस्पताल जाएं!' 
@@ -70,7 +73,7 @@ export default function AiChatPage() {
       };
     }
 
-    if (lower.includes('fever') || lower.includes('बुखार') || lower.includes('জ্বর')) {
+    if (lower.includes('fever') || lower.includes('बुखार') || lower.includes('ज्वर') || lower.includes('জ্বর')) {
       return {
         text: language === 'hi'
           ? 'बुखार के साथ क्या आपको शरीर में दर्द, सिरदर्द या ठंड लग रही है? पर्याप्त पानी पिएं और आराम करें। चलिए आपके डॉक्टर के लिए 3-संस्करण स्वास्थ्य रिपोर्ट तैयार करते हैं।'
@@ -82,7 +85,7 @@ export default function AiChatPage() {
       };
     }
 
-    if (lower.includes('cough') || lower.includes('खांसी') || lower.includes('কাশি')) {
+    if (lower.includes('cough') || lower.includes('खांसी') || lower.includes('काशि') || lower.includes('কাশি')) {
       return {
         text: language === 'hi'
           ? 'खांसी सूखी है या कफ के साथ? गर्म पानी की भाप लें और गुनगुना पानी पिएं। यदि सांस लेने में भारीपन हो, तो तुरंत डॉक्टर से परामर्श लें।'
@@ -94,7 +97,7 @@ export default function AiChatPage() {
       };
     }
 
-    if (lower.includes('stomach') || lower.includes('pain') || lower.includes('पेट दर्द') || lower.includes('পেট ব্যথা')) {
+    if (lower.includes('stomach') || lower.includes('pain') || lower.includes('पेट दर्द') || lower.includes('পেট ব্যথা') || lower.includes('গ্যাস')) {
       return {
         text: language === 'hi'
           ? 'पेट दर्द में हल्का और सुपाच्य भोजन लें। यदि दर्द बहुत तेज है या उल्टी/दस्त है, तो तुरंत डॉक्टर से जांच करवाएं।'
@@ -145,7 +148,7 @@ export default function AiChatPage() {
       };
       setMessages(prev => [...prev, aiMsg]);
       setIsTyping(false);
-    }, 600);
+    }, 500);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -153,6 +156,10 @@ export default function AiChatPage() {
       e.preventDefault();
       handleSend();
     }
+  };
+
+  const handleVoiceTranscript = (transcript: string) => {
+    setInput(transcript);
   };
 
   return (
@@ -165,7 +172,7 @@ export default function AiChatPage() {
           <div className={styles.chatHeader}>
             <div className={styles.botInfo}>
               <div className={styles.botAvatar}>
-                <span>🤖</span>
+                <IconBot size={28} color="#ffffff" />
                 <span className={styles.onlineDot}></span>
               </div>
               <div>
@@ -176,7 +183,8 @@ export default function AiChatPage() {
               </div>
             </div>
             <button onClick={() => router.push('/health-check')} className={styles.headerCta}>
-              🩺 {t('chat.convertReport') || 'Start Health Check'}
+              <IconStethoscope size={18} color="#ffffff" />
+              <span>{t('chat.convertReport') || 'Start Health Check'}</span>
             </button>
           </div>
 
@@ -189,11 +197,22 @@ export default function AiChatPage() {
                   msg.sender === 'user' ? styles.userWrapper : styles.aiWrapper
                 }`}
               >
-                {msg.sender === 'ai' && <div className={styles.msgAvatar}>🤖</div>}
+                {msg.sender === 'ai' && (
+                  <div className={styles.msgAvatar}>
+                    <IconBot size={20} color="#0284c7" />
+                  </div>
+                )}
                 
                 <div className={`${styles.messageBubble} ${msg.sender === 'user' ? styles.userBubble : styles.aiBubble} ${msg.isEmergency ? styles.emergencyBubble : ''}`}>
                   <p className={styles.messageText}>{msg.text}</p>
                   
+                  {/* Text-to-speech for AI answers */}
+                  {msg.sender === 'ai' && (
+                    <div style={{ marginTop: '0.5rem', display: 'flex', justifyContent: 'flex-start' }}>
+                      <AudioReadout textToRead={msg.text} />
+                    </div>
+                  )}
+
                   {msg.isEmergency && (
                     <div className={styles.emergencyActionBox}>
                       <a href="tel:108" className={styles.emergencyCallBtn}>
@@ -220,7 +239,9 @@ export default function AiChatPage() {
 
             {isTyping && (
               <div className={`${styles.messageWrapper} ${styles.aiWrapper}`}>
-                <div className={styles.msgAvatar}>🤖</div>
+                <div className={styles.msgAvatar}>
+                  <IconBot size={20} color="#0284c7" />
+                </div>
                 <div className={`${styles.messageBubble} ${styles.aiBubble} ${styles.typingBubble}`}>
                   <span className={styles.typingDot}></span>
                   <span className={styles.typingDot}></span>
@@ -233,7 +254,9 @@ export default function AiChatPage() {
 
           {/* Quick Suggestion Chips */}
           <div className={styles.suggestionChips}>
-            <span className={styles.chipLabel}>Suggestions:</span>
+            <span className={styles.chipLabel}>
+              {language === 'hi' ? 'सुझाव:' : language === 'bn' ? 'পরামর্শ:' : 'Quick Questions:'}
+            </span>
             {quickPrompts.map((p, idx) => (
               <button 
                 key={idx} 
@@ -245,7 +268,7 @@ export default function AiChatPage() {
             ))}
           </div>
 
-          {/* Chat Input */}
+          {/* Chat Input Bar with Trilingual Voice Input */}
           <div className={styles.inputArea}>
             <input
               type="text"
@@ -255,17 +278,31 @@ export default function AiChatPage() {
               placeholder={t('chat.inputPlaceholder') || 'Describe your symptoms in English, Hindi, or Bengali...'}
               className={styles.inputField}
             />
+
+            {/* Voice Input Widget */}
+            <VoiceInput
+              onTranscript={handleVoiceTranscript}
+            />
+
             <button
               onClick={() => handleSend()}
               disabled={!input.trim()}
               className={styles.sendButton}
             >
-              Send 🚀
+              <span>{language === 'hi' ? 'भेजें' : language === 'bn' ? 'পাঠান' : 'Send'}</span>
+              <span>🚀</span>
             </button>
           </div>
 
           <div className={styles.disclaimerNote}>
-            🛡️ RAHAT AI is an assistive triage tool and not a substitute for clinical diagnosis. For emergencies, call 108/112.
+            <IconShieldCheck size={16} color="#64748b" />
+            <span>
+              {language === 'hi' 
+                ? 'राहत एआई एक सहायक ट्राइएज उपकरण है। किसी भी आपातकालीन स्थिति में तुरंत 108/112 पर कॉल करें।' 
+                : language === 'bn' 
+                ? 'রাহাত এআই একটি সহায়ক ট্রায়াজ টুল। জরুরী পরিস্থিতিতে অবিলম্বে ১০৮/১১২ এ কল করুন।'
+                : 'RAHAT AI is an assistive triage tool and not a substitute for clinical diagnosis. For emergencies, call 108/112.'}
+            </span>
           </div>
         </div>
       </main>

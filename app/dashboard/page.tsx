@@ -1,4 +1,4 @@
-// app/dashboard/page.tsx — Patient Care Dashboard
+// app/dashboard/page.tsx — Patient Care Dashboard with Vitals Radar & Medicine Scanner
 'use client';
 
 import React, { useEffect, useState } from 'react';
@@ -7,6 +7,8 @@ import Link from 'next/link';
 import PatientHeader from '@/components/PatientHeader';
 import Footer from '@/components/Footer';
 import EmptyState from '@/components/EmptyState';
+import VitalsRadar from '@/components/VitalsRadar';
+import MedicineScanner from '@/components/MedicineScanner';
 import { useLanguage } from '@/components/LanguageProvider';
 import styles from './page.module.css';
 
@@ -219,6 +221,12 @@ export default function DashboardPage() {
             <span className={styles.actionCardBtn}>Book Visit →</span>
           </Link>
         </div>
+
+        {/* STANDOUT FEATURE 1: Interactive Vitals Radar & BMI Calculator */}
+        <VitalsRadar />
+
+        {/* STANDOUT FEATURE 2: AI Medicine Scanner */}
+        <MedicineScanner />
 
         {/* Two Columns: Recent Health Reports & Prescriptions */}
         <div className={styles.twoColGrid}>

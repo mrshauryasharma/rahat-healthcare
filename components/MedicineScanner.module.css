@@ -1,0 +1,303 @@
+.scannerWrapper {
+  background: var(--surface, #ffffff);
+  border: 1px solid var(--border, rgba(226, 232, 240, 0.8));
+  border-radius: var(--radius-2xl, 24px);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg, 0 10px 25px -5px rgba(0, 0, 0, 0.05));
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.scannerHeader {
+  margin-bottom: 1.5rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(14, 165, 233, 0.1);
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  border-radius: 9999px;
+  color: var(--primary-dark, #0284c7);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary, #0f172a);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 0.9375rem;
+  color: var(--text-secondary, #475569);
+  line-height: 1.5;
+}
+
+.chipRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.chipLabel {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-muted, #64748b);
+}
+
+.pillChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  background: var(--bg-soft, #f8fafc);
+  border: 1px solid var(--border, #e2e8f0);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-secondary, #475569);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pillChip:hover {
+  border-color: var(--primary, #0ea5e9);
+  color: var(--primary, #0ea5e9);
+  background: rgba(14, 165, 233, 0.05);
+}
+
+.pillChip.activeChip {
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  color: #ffffff;
+  border-color: #0284c7;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+}
+
+.searchForm {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-lg, 12px);
+  border: 1.5px solid var(--border, #e2e8f0);
+  background: var(--bg-soft, #f8fafc);
+  font-size: 0.9375rem;
+  color: var(--text-primary, #0f172a);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.searchInput:focus {
+  border-color: var(--primary, #0ea5e9);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
+}
+
+.scanBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 1.5rem;
+  border-radius: var(--radius-lg, 12px);
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.scanBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.45);
+}
+
+.scanBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Laser animation */
+.laserContainer {
+  position: relative;
+  height: 140px;
+  background: linear-gradient(180deg, rgba(14, 165, 233, 0.04) 0%, rgba(14, 165, 233, 0.12) 100%);
+  border: 2px dashed rgba(14, 165, 233, 0.4);
+  border-radius: var(--radius-xl, 16px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.laserLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #0ea5e9, #38bdf8, #0ea5e9, transparent);
+  box-shadow: 0 0 15px 3px rgba(14, 165, 233, 0.8);
+  animation: laserScan 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+}
+
+@keyframes laserScan {
+  0% { top: 5%; }
+  100% { top: 92%; }
+}
+
+.laserText {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--primary-dark, #0284c7);
+  animation: pulseText 1s infinite alternate;
+  z-index: 2;
+}
+
+@keyframes pulseText {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+/* Result Card */
+.resultCard {
+  background: linear-gradient(135deg, rgba(248, 250, 252, 0.9) 0%, rgba(241, 245, 249, 0.6) 100%);
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: var(--radius-xl, 16px);
+  padding: 1.5rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.resultHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border, #e2e8f0);
+  margin-bottom: 1.25rem;
+}
+
+.drugIdentity {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.iconCircle {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(14, 165, 233, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.drugName {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--text-primary, #0f172a);
+  margin-bottom: 0.2rem;
+}
+
+.genericFormula {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--text-muted, #64748b);
+  font-family: monospace;
+  margin-bottom: 0.35rem;
+}
+
+.categoryBadge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  background: rgba(5, 150, 105, 0.1);
+  color: #059669;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 6px;
+}
+
+.gridDetails {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 640px) {
+  .gridDetails {
+    grid-template-columns: 1fr;
+  }
+}
+
+.detailBox {
+  background: #ffffff;
+  border: 1px solid var(--border, #e2e8f0);
+  border-radius: var(--radius-md, 10px);
+  padding: 1rem;
+}
+
+.detailBox p {
+  font-size: 0.875rem;
+  color: var(--text-secondary, #334155);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.boxTitle {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-primary, #0f172a);
+  margin-bottom: 0.4rem;
+}
+
+.warningBox {
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
+.warningBox .boxTitle {
+  color: #92400e;
+}
+
+.warningBox p {
+  color: #b45309;
+}
+
+.footerNote {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--text-muted, #64748b);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}

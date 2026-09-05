@@ -5,6 +5,7 @@ import React from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import MedicineScanner from '@/components/MedicineScanner';
 import { useLanguage } from '@/components/LanguageProvider';
 import { healthConcerns } from '@/data/healthConcerns';
 import styles from './page.module.css';
@@ -134,7 +135,7 @@ export default function HomePage() {
           <div className={styles.aiHighlightCard}>
             <div className={styles.aiHighlightText}>
               <span className={styles.aiBadge}>🤖 24/7 Intelligent Triage Companion</span>
-              <h2>{language === 'hi' ? 'किसी भी भाषा में लक्षण पूछें' : language === 'bn' ? 'যেকোনো ভাষায় লক্ষণ জিজ্ঞাসা করুন' : 'Ask Symptoms in Any Language'}</h2>
+              <h2>{language === 'hi' ? 'किसी भी भाषा में लक्षण पूछें या बोलें' : language === 'bn' ? 'যেকোনো ভাষায় লক্ষণ জিজ্ঞাসা করুন বা বলুন' : 'Ask Symptoms in Any Language by Voice or Text'}</h2>
               <p>
                 {language === 'hi' 
                   ? 'हमारा AI सहायक आपके लक्षणों का विश्लेषण करता है, आपातकालीन संकेतों का पता लगाता है, और आपको डॉक्टर के पास जाने से पहले सटीक मार्गदर्शन देता है।'
@@ -169,6 +170,11 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+        </section>
+
+        {/* Standout Feature Highlight: AI Optical Medicine Scanner */}
+        <section style={{ maxWidth: '1200px', margin: '0 auto 3.5rem auto', width: '100%' }}>
+          <MedicineScanner />
         </section>
 
         {/* Features Section */}

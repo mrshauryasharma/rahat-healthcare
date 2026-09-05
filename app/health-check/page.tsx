@@ -1,4 +1,4 @@
-// app/health-check/page.tsx — Interactive health assessment flow
+// app/health-check/page.tsx — Interactive health assessment flow with Voice & Audio
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -9,6 +9,8 @@ import HealthConcernCard from '@/components/HealthConcernCard';
 import QuestionCard from '@/components/QuestionCard';
 import ProgressBar from '@/components/ProgressBar';
 import ImageUploader from '@/components/ImageUploader';
+import VoiceInput from '@/components/VoiceInput';
+import AudioReadout from '@/components/AudioReadout';
 import { useLanguage } from '@/components/LanguageProvider';
 import { healthConcerns } from '@/data/healthConcerns';
 import { getQuestionsForConcern } from '@/data/healthQuestions';
@@ -163,6 +165,7 @@ export default function HealthCheck() {
   };
 
   const currentQuestion = questions[currentQuestionIndex];
+  const questionTitle = currentQuestion ? (currentQuestion.text[language] || currentQuestion.text.en) : '';
 
   return (
     <div className={styles.container}>
@@ -189,15 +192,19 @@ export default function HealthCheck() {
         {/* Step 2: Answer questions */}
         {step === 2 && currentQuestion && (
           <section className={styles.stepSection}>
-            <ProgressBar
-              current={currentQuestionIndex + 1}
-              total={questions.length}
-              label={t('healthCheck.questionOf')
-                .replace('{current}', String(currentQuestionIndex + 1))
-                .replace('{total}', String(questions.length))}
-            />
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+              <ProgressBar
+                current={currentQuestionIndex + 1}
+                total={questions.length}
+                label={t('healthCheck.questionOf')
+                  .replace('{current}', String(currentQuestionIndex + 1))
+                  .replace('{total}', String(questions.length))}
+              />
+              <AudioReadout textToRead={questionTitle} />
+            </div>
+
             <QuestionCard
-              questionText={currentQuestion.text[language] || currentQuestion.text.en}
+              questionText={questionTitle}
               options={currentQuestion.options.map(o => ({
                 id: o.id,
                 text: o.text[language] || o.text.en,
@@ -235,13 +242,16 @@ export default function HealthCheck() {
               onRemove={() => setUploadedImages([])}
             />
             <div className={styles.notesSection}>
-              <label className={styles.label}>{t('healthCheck.additionalNotes') || 'Additional Notes'}</label>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+                <label className={styles.label}>{t('healthCheck.additionalNotes') || 'Additional Notes'}</label>
+                <VoiceInput onTranscript={(text: string) => setNotes(prev => prev ? `${prev} ${text}` : text)} />
+              </div>
               <textarea
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 className={styles.textarea}
                 rows={4}
-                placeholder={t('healthCheck.notesPlaceholder') || 'Add any additional information about your symptoms...'}
+                placeholder={t('healthCheck.notesPlaceholder') || 'Add any additional information about your symptoms or use the microphone to speak...'}
               />
             </div>
             <div className={styles.navButtons}>
@@ -259,7 +269,9 @@ export default function HealthCheck() {
         {step === 4 && (
           <section className={styles.stepSection}>
             <h2 className={styles.sectionHeading}>{t('healthCheck.review') || 'Review Answers'}</h2>
-            <p className={styles.subtitle}>Please review your answers before generating your clinical health summary.</p>
+            <p className={styles.subtitle}>
+              {language === 'hi' ? 'कृपया अपनी स्वास्थ्य रिपोर्ट तैयार करने से पहले अपने उत्तरों की समीक्षा करें।' : language === 'bn' ? 'রিপোর্ট তৈরির আগে অনুগ্রহ করে আপনার উত্তরগুলি পর্যালোচনা করুন।' : 'Please review your answers before generating your clinical health summary.'}
+            </p>
             
             <div className={styles.reviewList}>
               {answers.map((a, i) => (
