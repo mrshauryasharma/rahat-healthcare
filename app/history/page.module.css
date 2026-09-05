@@ -1,22 +1,23 @@
+/* app/history/page.module.css — Ultra-Clean History Timeline */
 .container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: var(--bg-color, #F7FAFA);
 }
 
 .main {
   flex: 1;
-  padding: 2rem 1rem;
-  max-width: 800px;
+  padding: 3.5rem 1.5rem;
+  max-width: 960px;
   margin: 0 auto;
   width: 100%;
 }
 
 .title {
-  font-size: 2rem;
-  color: var(--text-color, #1A2B3C);
-  margin-bottom: 2rem;
+  font-size: 2.25rem;
+  color: #0f172a;
+  margin-bottom: 2.5rem;
+  font-weight: 800;
 }
 
 .list {
@@ -26,14 +27,23 @@
 }
 
 .card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid var(--border-color, #E2E8F0);
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+  border: 1.5px solid #e2e8f0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: #0088CC;
+  box-shadow: var(--shadow-card-hover);
 }
 
 .cardInfo {
@@ -41,81 +51,62 @@
 }
 
 .date {
-  font-size: 0.875rem;
-  color: var(--secondary-color, #5A6B7C);
-  margin: 0 0 0.5rem 0;
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 0 0 0.4rem 0;
+  font-weight: 600;
 }
 
 .concern {
-  font-size: 1.25rem;
-  color: var(--primary-color, #0088CC);
+  font-size: 1.35rem;
+  color: #0f172a;
   margin: 0 0 0.5rem 0;
+  font-weight: 800;
 }
 
 .summary {
-  font-size: 1rem;
-  color: var(--text-color, #1A2B3C);
+  font-size: 0.95rem;
+  color: #475569;
   margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 300px;
+  line-height: 1.5;
 }
 
-.cardActions {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 1rem;
-}
-
-.badge {
-  background: #E6F8F3;
-  color: var(--green-color, #00C896);
-  padding: 0.25rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.buttons {
+.actions {
   display: flex;
   gap: 0.75rem;
 }
 
-.btnView, .btnDelete {
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-size: 0.875rem;
-  cursor: pointer;
+.btnView {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #0284c7 100%);
+  color: white;
+  padding: 0.75rem 1.35rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.9rem;
   text-decoration: none;
+  box-shadow: 0 4px 12px var(--color-primary-glow);
+  transition: all var(--transition-fast);
 }
 
-.btnView {
-  background: var(--primary-color, #0088CC);
+.btnView:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px var(--color-primary-glow);
   color: white;
-  border: none;
 }
 
 .btnDelete {
-  background: white;
-  color: #DC3545;
-  border: 1px solid #DC3545;
+  background: #ffffff;
+  color: #ef4444;
+  border: 1.5px solid #fecaca;
+  padding: 0.75rem 1.15rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
 }
 
-@media (max-width: 600px) {
-  .card {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-  .cardActions {
-    align-items: flex-start;
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  .summary {
-    max-width: 100%;
-  }
+.btnDelete:hover {
+  background: #fef2f2;
+  border-color: #ef4444;
 }

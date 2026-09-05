@@ -1,99 +1,81 @@
+/* components/HealthSummary.module.css */
 .container {
-  background: white;
-  border-radius: 8px;
-  padding: 2rem;
-  border: 1px solid var(--color-borders, #E2E8F0);
+  max-width: 100%;
 }
 
 .title {
-  margin-top: 0;
-  color: var(--color-primary-blue, #0088CC);
-  border-bottom: 2px solid var(--color-background, #F7FAFA);
+  font-size: 1.75rem;
+  color: #0f172a;
+  margin: 0 0 2rem 0;
+  font-weight: 800;
+  border-bottom: 2px solid #e0f2fe;
   padding-bottom: 1rem;
-  margin-bottom: 1.5rem;
 }
 
 .section {
-  margin-bottom: 1.5rem;
+  background: #f8fafc;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #e2e8f0;
 }
 
 .sectionTitle {
-  font-size: 1.1rem;
-  color: var(--color-secondary, #5A6B7C);
-  margin-bottom: 0.5rem;
-  margin-top: 0;
+  font-size: 1.05rem;
+  color: var(--color-primary);
+  margin: 0 0 0.6rem 0;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .text {
+  font-size: 0.98rem;
+  color: #1e293b;
+  line-height: 1.6;
   margin: 0;
-  color: var(--color-text, #1A2B3C);
-  line-height: 1.5;
 }
 
 .list {
-  margin: 0;
   padding-left: 1.5rem;
-  color: var(--color-text, #1A2B3C);
+  margin: 0;
 }
 
 .list li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
+  color: #1e293b;
+  font-size: 0.98rem;
 }
 
 .qaItem {
-  background: var(--color-background, #F7FAFA);
-  padding: 0.75rem 1rem;
-  border-radius: 6px;
-  margin-bottom: 0.5rem;
-  border: 1px solid var(--color-borders, #E2E8F0);
+  background: #ffffff;
+  padding: 0.85rem 1.15rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 0.6rem;
+  border: 1px solid #e2e8f0;
   font-size: 0.95rem;
+  color: #334155;
 }
 
-.warningNote {
-  color: #b45309;
-  font-weight: 500;
+.qaItem strong {
+  color: #0f172a;
 }
 
-.imagesGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 1rem;
+.nextSteps {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
 }
 
-.imageCard {
-  border: 1px solid var(--color-borders, #E2E8F0);
-  border-radius: 4px;
-  padding: 0.5rem;
-  background: var(--color-background, #F7FAFA);
+.nextSteps .sectionTitle {
+  color: #166534;
 }
 
-.medImage {
-  width: 100%;
-  height: auto;
-  border-radius: 2px;
+.importantNotes {
+  background: #fffbeb;
+  border-color: #fef3c7;
 }
 
-.medNotes {
-  font-size: 0.8rem;
-  margin: 0.5rem 0 0 0;
-  color: var(--color-secondary, #5A6B7C);
-}
-
-.textarea {
-  width: 100%;
-  min-height: 100px;
-  padding: 0.75rem;
-  border: 1px solid var(--color-borders, #E2E8F0);
-  border-radius: 4px;
-  font-family: inherit;
-}
-
-.disclaimer {
-  margin-top: 2rem;
-  padding: 1rem;
-  background-color: #FEF3C7;
-  color: #92400E;
-  border-radius: 4px;
-  font-size: 0.9rem;
-  text-align: center;
+.importantNotes .sectionTitle {
+  color: #92400e;
 }

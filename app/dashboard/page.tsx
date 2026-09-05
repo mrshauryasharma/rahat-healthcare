@@ -17,6 +17,7 @@ export default function DashboardPage() {
   const [assessments, setAssessments] = useState<any[]>([]);
   const [appointments, setAppointments] = useState<any[]>([]);
   const [prescriptions, setPrescriptions] = useState<any[]>([]);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const authStr = localStorage.getItem('rahat-auth');
@@ -57,7 +58,8 @@ export default function DashboardPage() {
   const copyHealthId = () => {
     if (currentHealthId && currentHealthId !== '---') {
       navigator.clipboard.writeText(currentHealthId);
-      alert(t('dashboard.copied') || 'Health ID copied to clipboard!');
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     }
   };
 
@@ -71,68 +73,96 @@ export default function DashboardPage() {
   return (
     <div className={styles.container}>
       <PatientHeader />
+      
       <main className={styles.main}>
-        {/* Top Patient Welcome Header */}
+        {/* Welcome Patient Hero Header */}
         <div className={styles.welcomeBanner}>
-          <div className={styles.patientAvatar}>👤</div>
-          <div className={styles.welcomeText}>
-            <h1>
-              {t('dashboard.welcome') || 'Welcome back,'} {profile?.name || 'Patient'}
-            </h1>
-            <p className={styles.welcomeSubtitle}>
-              {language === 'hi' ? 'आपका व्यक्तिगत स्वास्थ्य डैशबोर्ड' : language === 'bn' ? 'আপনার ব্যক্তিগত স্বাস্থ্য ড্যাশবোর্ড' : 'Your Personal Health Management Portal'}
-            </p>
+          <div className={styles.bannerLeft}>
+            <div className={styles.patientAvatar}>
+              <span>{profile?.name ? profile.name.charAt(0).toUpperCase() : '👤'}</span>
+            </div>
+            <div className={styles.welcomeText}>
+              <div className={styles.patientBadgeRow}>
+                <span className={styles.patientStatusBadge}>✓ Verified Patient</span>
+                {profile?.bloodGroup && (
+                  <span className={styles.bloodPill}>{profile.bloodGroup}</span>
+                )}
+              </div>
+              <h1>
+                {t('dashboard.welcome') || 'Welcome back,'} {profile?.name || 'Patient'}
+              </h1>
+              <p className={styles.welcomeSubtitle}>
+                {language === 'hi' ? 'आपका व्यक्तिगत स्वास्थ्य डैशबोर्ड एवं डिजिटल रिकॉर्ड्स' : language === 'bn' ? 'আপনার ব্যক্তিগত স্বাস্থ্য ড্যাশবোর্ড ও ডিজিটাল রেকর্ড' : 'Your Personal Health Management Portal & Lifetime Records'}
+              </p>
+            </div>
           </div>
-          <div className={styles.topActions}>
+
+          <div className={styles.bannerRight}>
             <Link href="/health-check" className={styles.newCheckBtn}>
               🩺 {t('hero.startCheck') || 'Start Health Check'}
+            </Link>
+            <Link href="/chat" className={styles.chatBotQuickBtn}>
+              🤖 AI Chatbot
             </Link>
           </div>
         </div>
 
-        {/* Top Grid: Digital Health ID Card & Profile Completion */}
+        {/* Top Grid: Smart Holographic Health ID Card & Profile Status */}
         <div className={styles.topGrid}>
-          {/* Digital Health ID Card */}
+          {/* Holographic Smart Health ID Card */}
           <div className={styles.healthCard}>
+            <div className={styles.cardGlowOverlay}></div>
+            
             <div className={styles.cardHeader}>
               <div className={styles.cardLogoArea}>
                 <img src="/logo.png" alt="RAHAT" className={styles.cardLogo} />
-                <span>{t('dashboard.healthCardTitle') || 'RAHAT Digital Health Card'}</span>
+                <div>
+                  <span className={styles.cardBrand}>RAHAT HEALTH ID</span>
+                  <span className={styles.cardSub}>National ABDM-Ready Passport</span>
+                </div>
               </div>
-              <span className={styles.qrBadge}>📱 ABDM Ready</span>
+              <div className={styles.chipArea}>
+                <span className={styles.smartChip}>💳</span>
+              </div>
             </div>
 
             <div className={styles.idDisplay}>
-              <span className={styles.idNumber}>{currentHealthId}</span>
+              <div>
+                <span className={styles.idLabel}>HEALTH IDENTIFIER</span>
+                <span className={styles.idNumber}>{currentHealthId}</span>
+              </div>
               <button onClick={copyHealthId} className={styles.copyBtn} title="Copy Health ID">
-                📋 {t('common.copy') || 'Copy'}
+                {copied ? '✓ Copied!' : '📋 Copy'}
               </button>
             </div>
 
             <div className={styles.cardMetaGrid}>
               <div>
-                <span className={styles.metaLabel}>Patient Name</span>
-                <strong className={styles.metaVal}>{profile?.name || '—'}</strong>
+                <span className={styles.metaLabel}>PATIENT NAME</span>
+                <strong className={styles.metaVal}>{profile?.name || 'Registered Patient'}</strong>
               </div>
               <div>
-                <span className={styles.metaLabel}>Blood Group</span>
+                <span className={styles.metaLabel}>BLOOD GROUP</span>
                 <strong className={styles.metaVal}>{profile?.bloodGroup || '—'}</strong>
               </div>
               <div>
-                <span className={styles.metaLabel}>Emergency Contact</span>
+                <span className={styles.metaLabel}>EMERGENCY CONTACT</span>
                 <strong className={styles.metaVal}>{profile?.emergencyContact?.phone || '—'}</strong>
               </div>
             </div>
           </div>
 
-          {/* Quick Stats & Actions Card */}
+          {/* Profile & Safety Status */}
           <div className={styles.profileStatusCard}>
-            <h3>Profile & Safety Status</h3>
-            <div className={styles.completionBarWrap}>
-              <div className={styles.completionLabel}>
-                <span>{t('dashboard.profileComplete') || 'Profile Completion'}</span>
-                <strong>{calculateProfileCompletion()}%</strong>
+            <div className={styles.profileStatusHeader}>
+              <div>
+                <h3>Profile & Safety Status</h3>
+                <p>Complete your health profile for better AI accuracy</p>
               </div>
+              <span className={styles.percentBadge}>{calculateProfileCompletion()}%</span>
+            </div>
+
+            <div className={styles.completionBarWrap}>
               <div className={styles.progressBar}>
                 <div className={styles.progressFill} style={{ width: `${calculateProfileCompletion()}%` }}></div>
               </div>
@@ -140,29 +170,65 @@ export default function DashboardPage() {
 
             <div className={styles.quickActionLinks}>
               <Link href="/profile" className={styles.quickActionItem}>
-                <span>👤</span>
+                <div className={styles.qaIcon}>👤</div>
                 <div>
                   <strong>{t('nav.profile') || 'View / Edit Health Profile'}</strong>
-                  <small>Vitals, allergies & contact</small>
+                  <small>Vitals, chronic ailments & emergency contact</small>
                 </div>
+                <span className={styles.qaArrow}>→</span>
               </Link>
-              <Link href="/chat" className={styles.quickActionItem}>
-                <span>🤖</span>
+              <Link href="/appointments" className={styles.quickActionItem}>
+                <div className={styles.qaIcon}>📅</div>
                 <div>
-                  <strong>{t('nav.aiChat') || 'AI Health Assistant'}</strong>
-                  <small>Ask symptoms in 3 languages</small>
+                  <strong>Doctor Consultations</strong>
+                  <small>Book physical or online appointment</small>
                 </div>
+                <span className={styles.qaArrow}>→</span>
               </Link>
             </div>
           </div>
         </div>
 
-        {/* Middle Two Columns: Health Checks History & Doctor Prescriptions */}
+        {/* 4 Quick Action Cards */}
+        <div className={styles.actionCardsGrid}>
+          <Link href="/health-check" className={styles.actionCard}>
+            <div className={styles.actionCardIcon} style={{ background: '#e0f2fe', color: '#0284c7' }}>🩺</div>
+            <h4>AI Health Assessment</h4>
+            <p>Answer guided symptom questions and generate doctor-ready summaries.</p>
+            <span className={styles.actionCardBtn}>Start Now →</span>
+          </Link>
+
+          <Link href="/chat" className={styles.actionCard}>
+            <div className={styles.actionCardIcon} style={{ background: '#f0fdf4', color: '#16a34a' }}>🤖</div>
+            <h4>24/7 AI Health Chatbot</h4>
+            <p>Ask health questions in English, Hindi, or Bengali anytime.</p>
+            <span className={styles.actionCardBtn}>Chat Now →</span>
+          </Link>
+
+          <Link href="/history" className={styles.actionCard}>
+            <div className={styles.actionCardIcon} style={{ background: '#fef3c7', color: '#d97706' }}>📋</div>
+            <h4>My Health Reports</h4>
+            <p>View, print, or download your past 3-version triage reports.</p>
+            <span className={styles.actionCardBtn}>View Records →</span>
+          </Link>
+
+          <Link href="/appointments" className={styles.actionCard}>
+            <div className={styles.actionCardIcon} style={{ background: '#ede9fe', color: '#7c3aed' }}>🏥</div>
+            <h4>Clinical Consultations</h4>
+            <p>Schedule visits with specialized verified physicians in your area.</p>
+            <span className={styles.actionCardBtn}>Book Visit →</span>
+          </Link>
+        </div>
+
+        {/* Two Columns: Recent Health Reports & Prescriptions */}
         <div className={styles.twoColGrid}>
           {/* Recent Health Assessment Reports */}
           <section className={styles.sectionCard}>
             <div className={styles.sectionTitleRow}>
-              <h2>📋 {t('dashboard.recentAssessments') || 'Recent Health Assessments'}</h2>
+              <div>
+                <h2>📋 {t('dashboard.recentAssessments') || 'Recent Health Assessments'}</h2>
+                <p>Latest AI-assisted triage logs and summaries</p>
+              </div>
               {assessments.length > 0 && (
                 <Link href="/history" className={styles.viewAllLink}>
                   {t('dashboard.viewAll') || 'View All'} →
@@ -182,12 +248,15 @@ export default function DashboardPage() {
               <div className={styles.reportList}>
                 {assessments.slice(-3).reverse().map((assess: any, idx: number) => (
                   <div key={idx} className={styles.reportItem}>
-                    <div>
-                      <h4>{assess.concernName || 'Health Check'}</h4>
-                      <p className={styles.reportDate}>{new Date(assess.createdAt).toLocaleDateString()}</p>
+                    <div className={styles.reportLeft}>
+                      <div className={styles.reportIconCircle}>📋</div>
+                      <div>
+                        <h4>{assess.concernName || 'Health Check'}</h4>
+                        <p className={styles.reportDate}>Checked on {new Date(assess.createdAt).toLocaleDateString()}</p>
+                      </div>
                     </div>
                     <Link href="/history" className={styles.viewReportBtn}>
-                      View 3-Version Report →
+                      View Report →
                     </Link>
                   </div>
                 ))}
@@ -198,7 +267,10 @@ export default function DashboardPage() {
           {/* Digital Prescriptions Issued by Doctor */}
           <section className={styles.sectionCard}>
             <div className={styles.sectionTitleRow}>
-              <h2>℞ Doctor Prescriptions</h2>
+              <div>
+                <h2>℞ Doctor Prescriptions</h2>
+                <p>Official digital prescriptions signed by medical practitioners</p>
+              </div>
               <span className={styles.badgeCount}>{prescriptions.length} Active</span>
             </div>
 
@@ -224,40 +296,8 @@ export default function DashboardPage() {
             )}
           </section>
         </div>
-
-        {/* Appointments Section */}
-        <section className={styles.sectionCard}>
-          <div className={styles.sectionTitleRow}>
-            <h2>📅 {t('dashboard.myAppointments') || 'My Doctor Consultations'}</h2>
-            <Link href="/appointments" className={styles.bookAppBtn}>
-              + Book New Appointment
-            </Link>
-          </div>
-
-          {appointments.length === 0 ? (
-            <EmptyState
-              icon="📅"
-              title="No Upcoming Consultations"
-              message="Book a physical or teleconsultation with specialized doctors in your area."
-              actionLabel="Book Consultation"
-              onAction={() => router.push('/appointments')}
-            />
-          ) : (
-            <div className={styles.appGrid}>
-              {appointments.map((app: any, idx: number) => (
-                <div key={idx} className={styles.appCard}>
-                  <div className={styles.appHeader}>
-                    <strong>{app.doctorName || 'Doctor Consultation'}</strong>
-                    <span className={styles.appStatusPill}>{app.status || 'Scheduled'}</span>
-                  </div>
-                  <p className={styles.appSpecialty}>{app.specialty} • {app.hospitalName || 'Clinical Network'}</p>
-                  <p className={styles.appTime}>🕒 {app.date} at {app.time}</p>
-                </div>
-              ))}
-            </div>
-          )}
-        </section>
       </main>
+
       <Footer />
     </div>
   );

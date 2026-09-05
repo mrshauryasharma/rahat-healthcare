@@ -1,19 +1,19 @@
-/* app/login/page.module.css */
+/* app/login/page.module.css — Ultra-Clean Patient Login */
 .container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--color-background);
-  padding: 1rem;
+  padding: 2rem 1.5rem;
+  position: relative;
 }
 
 .header {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
-  right: 1rem;
+  top: 1.5rem;
+  left: 2rem;
+  right: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,126 +21,131 @@
 
 .backLink {
   color: var(--color-primary);
-  font-weight: 500;
+  font-weight: 700;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: transform var(--transition-fast);
 }
 
 .backLink:hover {
-  text-decoration: underline;
+  transform: translateX(-3px);
 }
 
 .card {
-  background: white;
-  padding: 2.5rem;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+  background: #ffffff;
+  padding: 3rem 2.5rem;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
   width: 100%;
-  max-width: 420px;
+  max-width: 440px;
   text-align: center;
-  border: 1px solid var(--color-borders);
-}
-
-.logoImg {
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
-}
-
-.label {
-  text-align: left;
-  display: block;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: -0.5rem;
+  border: 1.5px solid #e2e8f0;
 }
 
 .logo {
   margin-bottom: 1.5rem;
 }
 
+.logoImg {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0, 136, 204, 0.2));
+}
+
 .title {
-  font-size: 1.5rem;
-  color: var(--color-text);
-  margin-bottom: 0.5rem;
-  font-weight: 700;
+  font-size: 1.75rem;
+  color: #0f172a;
+  margin: 0 0 0.4rem 0;
+  font-weight: 800;
 }
 
 .subtitle {
-  color: var(--color-secondary);
-  margin-bottom: 2rem;
+  color: #64748b;
   font-size: 0.95rem;
-}
-
-.demoNote {
-  background: #e0f2fe;
-  color: #0369a1;
-  padding: 0.75rem;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-  font-size: 0.875rem;
-  border: 1px solid #bae6fd;
+  margin: 0 0 2rem 0;
+  line-height: 1.5;
 }
 
 .form {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  text-align: left;
 }
 
-.inputGroup {
+.label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: -0.5rem;
+}
+
+.phoneInputGroup {
   display: flex;
-  border: 1px solid var(--color-borders);
-  border-radius: 8px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: var(--radius-md);
   overflow: hidden;
+  background: #ffffff;
+  transition: all var(--transition-fast);
+}
+
+.phoneInputGroup:focus-within {
+  border-color: #0088CC;
+  box-shadow: 0 0 0 3px rgba(0, 136, 204, 0.15);
 }
 
 .prefix {
-  background: #f1f5f9;
-  padding: 0.75rem 1rem;
-  color: var(--color-secondary);
-  font-weight: 600;
-  border-right: 1px solid var(--color-borders);
-  display: flex;
-  align-items: center;
+  padding: 0.95rem 1rem;
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-right: 1px solid #e2e8f0;
 }
 
 .input {
   flex: 1;
-  padding: 0.75rem 1rem;
   border: none;
-  font-size: 1rem;
+  padding: 0.95rem 1rem;
+  font-size: 1.05rem;
   outline: none;
-}
-
-.input:focus {
-  background: #f8fafc;
-}
-
-.error {
-  color: #ef4444;
-  font-size: 0.875rem;
-  text-align: left;
+  font-family: inherit;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .button {
-  background: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary) 0%, #0284c7 100%);
   color: white;
   border: none;
-  padding: 0.875rem;
-  border-radius: 8px;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  font-weight: 800;
   font-size: 1rem;
-  font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 14px var(--color-primary-glow);
+  margin-top: 0.5rem;
+}
+
+.button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--color-primary-glow);
 }
 
 .button:disabled {
-  opacity: 0.7;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
-.button:not(:disabled):hover {
-  background: #0077b3;
+.privacyNote {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin-top: 1.5rem;
+  line-height: 1.5;
 }

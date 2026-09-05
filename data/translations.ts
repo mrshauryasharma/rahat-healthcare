@@ -1094,6 +1094,11 @@ export const translations: TranslationRecord = {
     hi: 'अपने लक्षण या स्वास्थ्य प्रश्न लिखें...',
     bn: 'আপনার লক্ষণ বা স্বাস্থ্য প্রশ্ন লিখুন...',
   },
+  'chat.inputPlaceholder': {
+    en: 'Describe your symptoms in English, Hindi, or Bengali...',
+    hi: 'अंग्रेजी, हिंदी या बंगाली में अपने लक्षणों का वर्णन करें...',
+    bn: 'ইংরেজি, হিন্দি বা বাংলায় আপনার লক্ষণ বর্ণনা করুন...',
+  },
   'chat.send': {
     en: 'Send',
     hi: 'भेजें',

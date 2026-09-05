@@ -12,6 +12,13 @@ import styles from './page.module.css';
 export default function HomePage() {
   const { t, language } = useLanguage();
 
+  const trustStats = [
+    { value: '50+', label: language === 'hi' ? 'चिकित्सा स्थितियाँ' : language === 'bn' ? 'চিকিৎসা শর্তাবলী' : 'Medical Conditions' },
+    { value: '3', label: language === 'hi' ? 'भारतीय भाषाएँ' : language === 'bn' ? 'ভারতীয় ভাষা' : 'Native Languages' },
+    { value: '100%', label: language === 'hi' ? 'क्लाइंट-साइड एन्क्रिप्शन' : language === 'bn' ? 'ক্লায়েন্ট এনক্রিপশন' : 'Client Encrypted' },
+    { value: 'ABDM', label: language === 'hi' ? 'डिजिटल स्वास्थ्य आईडी' : language === 'bn' ? 'ডিজিটাল স্বাস্থ্য আইডি' : 'Digital Health ID' },
+  ];
+
   const features = [
     { icon: '🤖', titleKey: 'features.symptomCheck', descKey: 'features.symptomCheckDesc', fallbackTitle: 'AI Symptom Check', fallbackDesc: 'Interactive symptom guided triage in your preferred language.' },
     { icon: '🌐', titleKey: 'features.multilingual', descKey: 'features.multilingualDesc', fallbackTitle: '3 Native Languages', fallbackDesc: 'Available in English, हिन्दी, and বাংলা seamlessly.' },
@@ -25,11 +32,11 @@ export default function HomePage() {
   ];
 
   const steps = [
-    { titleKey: 'howItWorks.step1', descKey: 'howItWorks.step1Desc', fallbackTitle: 'Select Your Concern', fallbackDesc: 'Choose from 10 common health conditions or describe custom symptoms.' },
-    { titleKey: 'howItWorks.step2', descKey: 'howItWorks.step2Desc', fallbackTitle: 'Answer Guided Questions', fallbackDesc: 'Complete simple adaptive multiple-choice questions about duration & severity.' },
-    { titleKey: 'howItWorks.step3', descKey: 'howItWorks.step3Desc', fallbackTitle: 'Upload Prescriptions (Optional)', fallbackDesc: 'Add photos of current medicine packages for clinical notes.' },
-    { titleKey: 'howItWorks.step4', descKey: 'howItWorks.step4Desc', fallbackTitle: 'Review 3-Version Report', fallbackDesc: 'Inspect patient-friendly summary, clinical triage report, and English report.' },
-    { titleKey: 'howItWorks.step5', descKey: 'howItWorks.step5Desc', fallbackTitle: 'Consult Doctor or Save', fallbackDesc: 'Share your Health ID with your physician or book a consultation.' },
+    { stepNum: '01', titleKey: 'howItWorks.step1', descKey: 'howItWorks.step1Desc', fallbackTitle: 'Select Your Concern', fallbackDesc: 'Choose from common health conditions or describe custom symptoms.' },
+    { stepNum: '02', titleKey: 'howItWorks.step2', descKey: 'howItWorks.step2Desc', fallbackTitle: 'Answer Guided Questions', fallbackDesc: 'Complete simple adaptive multiple-choice questions about duration & severity.' },
+    { stepNum: '03', titleKey: 'howItWorks.step3', descKey: 'howItWorks.step3Desc', fallbackTitle: 'Upload Prescriptions', fallbackDesc: 'Add photos of current medicine packages for clinical notes.' },
+    { stepNum: '04', titleKey: 'howItWorks.step4', descKey: 'howItWorks.step4Desc', fallbackTitle: 'Review 3-Version Report', fallbackDesc: 'Inspect patient-friendly summary, clinical triage report, and English report.' },
+    { stepNum: '05', titleKey: 'howItWorks.step5', descKey: 'howItWorks.step5Desc', fallbackTitle: 'Consult Doctor or Save', fallbackDesc: 'Share your Health ID with your physician or book a consultation.' },
   ];
 
   return (
@@ -41,6 +48,11 @@ export default function HomePage() {
         <section className={styles.hero}>
           <div className={styles.heroBackground}></div>
           <div className={styles.heroContent}>
+            <div className={styles.statusPill}>
+              <span className={styles.pulseDot}></span>
+              <span>{language === 'hi' ? '24/7 AI-संचालित स्वास्थ्य सहायता' : language === 'bn' ? '২৪/৭ AI-চালিত স্বাস্থ্য সহায়তা' : '24/7 AI-Powered Healthcare Companion'}</span>
+            </div>
+
             <div className={styles.logoBadge}>
               <img src="/logo.png" alt="RAHAT Logo" className={styles.heroLogo} />
             </div>
@@ -60,11 +72,22 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* Doctor Portal Banner */}
+            {/* Live Trust Stats Row */}
+            <div className={styles.statsRow}>
+              {trustStats.map((stat, idx) => (
+                <div key={idx} className={styles.statItem}>
+                  <strong className={styles.statVal}>{stat.value}</strong>
+                  <span className={styles.statLabel}>{stat.label}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Doctor Portal Access Banner */}
             <div className={styles.portalRow}>
               <Link href="/doctor/login" className={styles.portalCardDoc}>
-                <span className={styles.portalIcon}>👨‍⚕️</span>
-                <div>
+                <div className={styles.docIconWrap}>👨‍⚕️</div>
+                <div className={styles.docTextWrap}>
+                  <span className={styles.docBadge}>{language === 'hi' ? 'डॉक्टर पोर्टल' : language === 'bn' ? 'ডাক্তার পোর্টাল' : 'Practitioner Gateway'}</span>
                   <strong>{language === 'hi' ? 'क्या आप डॉक्टर हैं? क्लिनिकल पोर्टल में प्रवेश करें' : language === 'bn' ? 'আপনি কি ডাক্তার? ক্লিনিক্যাল পোর্টালে প্রবেশ করুন' : 'Are you a Doctor? Enter Clinical Portal'}</strong>
                   <span>{language === 'hi' ? 'रोगी सारांश देखें, लक्षण रिकॉर्ड जांचें और डिजिटल पर्चे जारी करें' : language === 'bn' ? 'রোগীর সারাংশ দেখুন এবং ডিজিটাল প্রেসক্রিপশন প্রদান করুন' : 'Verify patient summaries, review symptom logs & issue digital prescriptions'}</span>
                 </div>
@@ -84,7 +107,7 @@ export default function HomePage() {
               {language === 'hi' ? 'सामान्य स्वास्थ्य समस्याएं' : language === 'bn' ? 'সাধারণ স্বাস্থ্য সমস্যা' : 'Common Health Concerns'}
             </h2>
             <p className={styles.sectionSubtitle}>
-              {language === 'hi' ? 'तुरंत AI सहायता और संरचित स्वास्थ्य रिपोर्ट पाने के लिए अपनी समस्या चुनें:' : language === 'bn' ? 'তাৎক্ষণিক AI সহায়তা ও রিপোর্টের জন্য আপনার সমস্যা নির্বাচন করুন:' : 'Select your concern to launch an interactive trilingual symptom assessment:'}
+              {language === 'hi' ? 'तुरंत AI सहायता और त्रिभाषी स्वास्थ्य रिपोर्ट पाने के लिए अपनी समस्या चुनें:' : language === 'bn' ? 'তাৎক্ষণিক AI সহায়তা ও রিপোর্টের জন্য আপনার সমস্যা নির্বাচন করুন:' : 'Select your concern to launch an interactive trilingual symptom assessment:'}
             </p>
           </div>
 
@@ -95,9 +118,12 @@ export default function HomePage() {
                 href={`/health-check?concern=${concern.id}`}
                 className={styles.concernCard}
               >
-                <span className={styles.concernIcon}>{concern.icon}</span>
+                <div className={styles.concernIconBox}>{concern.icon}</div>
                 <strong className={styles.concernName}>{concern.name[language] || concern.name.en}</strong>
                 <span className={styles.concernDesc}>{concern.description[language] || concern.description.en}</span>
+                <span className={styles.checkPill}>
+                  {language === 'hi' ? 'जांचें →' : language === 'bn' ? 'পরীক্ষা →' : 'Check →'}
+                </span>
               </Link>
             ))}
           </div>
@@ -107,29 +133,38 @@ export default function HomePage() {
         <section className={styles.aiHighlightSection}>
           <div className={styles.aiHighlightCard}>
             <div className={styles.aiHighlightText}>
-              <span className={styles.aiBadge}>🤖 24/7 AI Health Companion</span>
+              <span className={styles.aiBadge}>🤖 24/7 Intelligent Triage Companion</span>
               <h2>{language === 'hi' ? 'किसी भी भाषा में लक्षण पूछें' : language === 'bn' ? 'যেকোনো ভাষায় লক্ষণ জিজ্ঞাসা করুন' : 'Ask Symptoms in Any Language'}</h2>
               <p>
                 {language === 'hi' 
-                  ? 'हमारा AI सहायक आपके लक्षणों का विश्लेषण करता है, आपातकालीन संकेतों का पता लगाता है, और आपको सुरक्षित कदम उठाने में मदद करता है।'
+                  ? 'हमारा AI सहायक आपके लक्षणों का विश्लेषण करता है, आपातकालीन संकेतों का पता लगाता है, और आपको डॉक्टर के पास जाने से पहले सटीक मार्गदर्शन देता है।'
                   : language === 'bn'
-                  ? 'আমাদের AI সহকারী আপনার লক্ষণ বিশ্লেষণ করে, জরুরী লক্ষণ সনাক্ত করে এবং নিরাপদ পদক্ষেপ নিতে সাহায্য করে।'
-                  : 'Our AI assistant performs real-time symptom triage, identifies critical emergency signs, and helps you formulate clear questions for your physician.'}
+                  ? 'আমাদের AI সহকারী আপনার লক্ষণ বিশ্লেষণ করে, জরুরী লক্ষণ সনাক্ত করে এবং সঠিক নির্দেশনা প্রদান করে।'
+                  : 'Our AI assistant performs real-time symptom triage, identifies critical emergency signs, and prepares a structured 3-version medical report for your physician.'}
               </p>
-              <Link href="/chat" className={styles.aiHighlightBtn}>
-                💬 {language === 'hi' ? 'AI सहायक से अभी बात करें' : language === 'bn' ? 'AI সহকারীর সাথে কথা বলুন' : 'Chat with AI Assistant Now'} →
-              </Link>
+              
+              <div className={styles.aiActionRow}>
+                <Link href="/chat" className={styles.aiHighlightBtn}>
+                  💬 {language === 'hi' ? 'AI सहायक से अभी बात करें' : language === 'bn' ? 'AI সহকারীর সাথে কথা বলুন' : 'Chat with AI Assistant Now'} →
+                </Link>
+                <span className={styles.aiHelperText}>
+                  ✓ English &bull; हिन्दी &bull; বাংলা
+                </span>
+              </div>
             </div>
+
             <div className={styles.aiHighlightGraphic}>
               <div className={styles.chatSnippet}>
                 <div className={styles.chatBubbleAi}>
-                  {language === 'hi' ? 'नमस्ते! आप कैसा महसूस कर रहे हैं? मुझे अपने लक्षण बताएं।' : language === 'bn' ? 'নমস্কার! আপনি কেমন অনুভব করছেন? আমাকে জানান।' : 'Hello! How are you feeling today? Tell me your symptoms.'}
+                  <div className={styles.botMiniAvatar}>🤖</div>
+                  <div>{language === 'hi' ? 'नमस्ते! आप कैसा महसूस कर रहे हैं? मुझे अपने लक्षण बताएं।' : language === 'bn' ? 'নমস্কার! আপনি কেমন অনুভব করছেন? আমাকে জানান।' : 'Hello! How are you feeling today? Tell me your symptoms.'}</div>
                 </div>
                 <div className={styles.chatBubbleUser}>
-                  {language === 'hi' ? 'मुझे 2 दिन से बुखार और गले में दर्द है।' : language === 'bn' ? 'আমার ২ দিন ধরে জ্বর ও গলায় ব্যথা।' : 'I have had mild fever and a sore throat for 2 days.'}
+                  {language === 'hi' ? 'मुझे 2 दिन से तेज बुखार और सिरदर्द है।' : language === 'bn' ? 'আমার ২ দিন ধরে তীব্র জ্বর ও মাথা ব্যথা।' : 'I have had high fever and a headache for 2 days.'}
                 </div>
                 <div className={styles.chatBubbleAi}>
-                  {language === 'hi' ? '✓ मैं समझ गया। चलिए एक त्वरित 3-मिनट स्वास्थ्य रिपोर्ट तैयार करते हैं।' : language === 'bn' ? '✓ বুঝতে পেরেছি। চলুন ৩ মিনিটের স্বাস্থ্য রিপোর্ট তৈরি করি।' : '✓ Understood. Let’s prepare your 3-version health report for the doctor.'}
+                  <div className={styles.botMiniAvatar}>🤖</div>
+                  <div>{language === 'hi' ? '✓ समझ गया। चलिए आपकी डॉक्टर-तैयार स्वास्थ्य रिपोर्ट जनरेट करते हैं।' : language === 'bn' ? '✓ বুঝতে পেরেছি। চলুন ডাক্তার-প্রস্তুত রিপোর্ট তৈরি করি।' : '✓ Understood. Let’s prepare your 3-version clinical report for the doctor.'}</div>
                 </div>
               </div>
             </div>
@@ -139,6 +174,7 @@ export default function HomePage() {
         {/* Features Section */}
         <section className={styles.section}>
           <div className={styles.sectionHeaderWrap}>
+            <span className={styles.sectionTag}>Platform Features</span>
             <h2 className={styles.sectionTitle}>{t('features.title') || 'How RAHAT Helps You'}</h2>
           </div>
           <div className={styles.grid}>
@@ -155,12 +191,13 @@ export default function HomePage() {
         {/* How It Works Section */}
         <section className={styles.sectionAlt}>
           <div className={styles.sectionHeaderWrap}>
+            <span className={styles.sectionTag}>5-Step Process</span>
             <h2 className={styles.sectionTitle}>{t('howItWorks.title') || 'How It Works'}</h2>
           </div>
           <div className={styles.steps}>
             {steps.map((step, i) => (
               <div key={i} className={styles.step}>
-                <div className={styles.stepNumber}>{i + 1}</div>
+                <div className={styles.stepNumber}>{step.stepNum}</div>
                 <div className={styles.stepContent}>
                   <h3>{t(step.titleKey) || step.fallbackTitle}</h3>
                   <p>{t(step.descKey) || step.fallbackDesc}</p>
